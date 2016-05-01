@@ -30,7 +30,7 @@ prepareData <- function(df)
   # convert the date and time strings to typed columns 
   df$Date <- gsub("/1/","/01/",df$Date)
   df$Date <- gsub("/2/","/02/",df$Date)
-  df$DateFormat <- as.Date(strptime(paste(df$Date, df$Time),"%d/%m/%Y %H:%M:%S"))
+  df$DateFormat <- parse_date_time(paste(f2Days$DateFormat, f2Days$Time),"%Y-%m-%d %H:%M:%S")
   df <- filter(df,Global_Active_Power != "?")
   #gap <- powerData$Global_Active_Power
   df$Global_Active_Power <- as.numeric(as.character(df$Global_Active_Power))
